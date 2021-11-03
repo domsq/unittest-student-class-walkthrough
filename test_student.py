@@ -4,21 +4,40 @@ from student import Student
 
 class TestStudent(unittest.TestCase):
 
-    def test_full_name(self):
-        student = Student("John", "Doe")
+    #  Set up test data and creates an entire class, not just an instance.
+    #  Runs once before all tests.
+    # @classmethod
+    # def setUpClass(cls):
+    #     print("setUpClass")
 
-        self.assertEqual(student.full_name, "John Doe")
+    #  Removes class test data. Runs after all tests completed.
+    # @classmethod
+    # def tearDownClass(cls):
+    #     print("tearDownClass")
+
+    #  Sets up test data for each test and creates an instance of a class.
+    #  Runs before each test.
+    def setUp(self):
+        print("setUp")
+        self.student = Student("John", "Doe")
+
+    #  Removes class instance test data and runs after each test.
+    # def tearDown(self):
+    #     print("tearDown")
+
+    def test_full_name(self):
+        print("test_full_name")
+        self.assertEqual(self.student.full_name, "John Doe")
 
     def test_alert_santa(self):
-        student = Student("John", "Doe")
-        student.alert_santa()
+        print("test_alert_santa")
+        self.student.alert_santa()
 
-        self.assertTrue(student.naughty_list)
+        self.assertTrue(self.student.naughty_list)
 
     def test_email(self):
-        student = Student("John", "Doe")
-
-        self.assertEqual(student.email, "john.doe@email.com")
+        print("test_email")
+        self.assertEqual(self.student.email, "john.doe@email.com")
 
 
 if __name__ == "__main__":
