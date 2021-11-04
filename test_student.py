@@ -63,6 +63,10 @@ class TestStudent(unittest.TestCase):
             self.assertEqual(schedule, "Something went wrong" +
                              " with the request!")
 
+    def test_start_date(self):
+        self.assertEqual(self.student.start_date, str(
+                         self.student._start_date))
+
 
 if __name__ == "__main__":
     unittest.main()
